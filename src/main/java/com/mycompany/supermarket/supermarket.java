@@ -21,7 +21,6 @@ public class supermarket {
             //Llamando al método del menú.
         } //Llave del if
         while (!"cajero_202106651".equals(Usuario) || !"ipc1_202106651".equals(Contraseña)) { //While por si el primer if no cumple con la condición, osea que la contraseña o el usuario son incorrectos.
-            System.out.println("__________________________________");
             System.out.println("NOMBRE DE USUARIO O CONTRASEÑA INCORRECTOS, INTENTELO NUEVAMENTE.");
             System.out.println("__________________________________");
             System.out.println("*INGRESE SU NOMBRE DE USUARIO*");
@@ -41,14 +40,17 @@ public class supermarket {
     public static void menuSuper() { //Método para llamar al menú.
         LocalDate fechaActual = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        //Scanners
         Scanner menuSuper = new Scanner(System.in);
         Scanner prod = new Scanner(System.in);
         Scanner sn = new Scanner(System.in);
+        //Variables tipo caracter
         String[] nombre = new String[20];
         String nombrecajero = "Luis Corleto";
         String cupondescuento;
         String nombrecliente = null;
         String[] cupdescuento = new String[50];
+        //Variables de magnitud grande
         double[] descuento = new double[50];
         double[] totales = new double[20];
         double[] precio = new double[20];
@@ -56,8 +58,9 @@ public class supermarket {
         double pordescuento = 0;
         double desc = 0;
         double total = 0;
+        //Variable tipo condición
         boolean salir = false;
-        boolean existe = false;
+        //Variables tipo entero
         int[] cantidad = new int[10000];
         int[] nombre2 = new int[20];
         int aux = 0;
@@ -75,7 +78,6 @@ public class supermarket {
         int asa = 0;
         int asa2 = 0;
         int cont1 = 0;
-        int contador = 0;
 
         while (!salir) {
             System.out.println("________________________________________");
@@ -101,7 +103,7 @@ public class supermarket {
                         boolean productoExistente = false;
                         for (int i = 0; i < 20; i++) {
                             if (nombre[i] != null && nombre[i].equals(nombreproducto)) {
-                                System.out.println("El producto ya está agregado, ingrese otro");
+                                System.out.println("El producto ya esta agregado, ingrese otro");
                                 productoExistente = true;
                                 break;
                             }
@@ -119,7 +121,7 @@ public class supermarket {
                                 break;
                             }
                         } else {
-                            System.out.println("El producto debe ser mayor a 0");
+                            System.out.println("EL PRECIO DEL PRODUCTO NO PUEDE SER IGUAL A 0");
                             continue;
                         }
                         for (int i = 0; i < 20; i++) {
@@ -135,21 +137,18 @@ public class supermarket {
                         System.out.println("[2]. No");
                         System.out.println("---------------------------------------------");
                         salir1 = sn.nextInt();
-//                        if (salir1 != 1) {
-//                            aux2 = false;
-//                        }
                     } while (salir1 == 1);
                     continue;
                 case 2:
 
                     System.out.println("---USTED SE ENCUENTRA EN EL MENU -AGREGAR CUPON DE DESCUENTO---");
-                    do /*(aux3)*/ {
-                        System.out.println("Ingrese el cupon de descuento");
+                    do {
+                        System.out.println("Ingrese el cupon de descuento de 4 caracteres");
                         cupondescuento = menuSuper.next();
                         boolean cuponExistente = false;
                         for (int i = 0; i < 20; i++) {
                             if (cupdescuento[i] != null && cupdescuento[i].equals(cupondescuento)) {
-                                System.out.println("El cupon de descuento ya está agregado, ingrese otro");
+                                System.out.println("El cupon de descuento ya esta agregado, ingrese otro");
                                 cuponExistente = true;
                             }
                         }
@@ -165,11 +164,11 @@ public class supermarket {
                                 break;
                             }
                         } else {
-                            System.out.println("El porcentaje de descuento debe ser mayor a 0 y menor a 100");
+                            System.out.println("EL PORCENTAJE DE DESCUENTO NO PUEDE SER IGUAL A 0 y 100");
                             continue;
                         }
                         if (cupondescuento.length() > 4) {
-                            System.out.println("El codigo solo puede tener 4 caracteres");
+                            System.out.println("EL CODIGO SOLO PUEDE TENER 4 CARACTERES");
                             continue;
                         }
                         for (int i = 0; i < 50; i++) {
@@ -184,9 +183,6 @@ public class supermarket {
                         System.out.println("[2]. No");
                         System.out.println("--------------------------------------------------------------");
                         salir2 = menuSuper.nextInt();
-//                        if (salir2 != 1) {
-//                            aux3 = false;
-//                        }
                     } while (salir2 == 1);
                     continue;
                 case 3:
@@ -196,10 +192,7 @@ public class supermarket {
                     nombrecliente = menuSuper.next();
                     System.out.println("Ingrese su nit o coloque un 0 si no tiene");
                     nit = menuSuper.nextInt();
-//                    if (nit == 0) {
-//                        String CF = String.valueOf(nit);
-//                    }
-                    do/*(aux4)*/ {
+                    do {
                         System.out.println("Esta es la lista de productos que puede comprar");
                         for (int i = 0; i < 20; i++) {
                             if (nombre[i] != null) {
@@ -208,11 +201,6 @@ public class supermarket {
                         }
                         System.out.println("Seleccione el numero del producto que quiere comprar");
                         noproductos = menuSuper.nextInt();
-//                        for (int i = noproductos; i < 20; i++) {
-//                            noproductos = noproductos;
-//                            nombre2[i] = menuSuper.nextInt();
-//                            break;
-//                        }
                         System.out.println("Seleccione la cantidad que quiera comprar");
                         cant = menuSuper.nextInt();
                         for (int i = noproductos; i < 10000; i++) {
@@ -232,83 +220,79 @@ public class supermarket {
                                 System.out.println("Producto seleccionado: " + nombre[2]);
                                 totales[2] = precio[2] * cantidad[i];
                             }
-                            if (noproductos == 3) {
+                            if (nombre2[i] == 3) {
                                 System.out.println("Producto seleccionado: " + nombre[3]);
                                 totales[3] = precio[3] * cantidad[i];
                             }
-                            if (noproductos == 4) {
+                            if (nombre2[i] == 4) {
                                 System.out.println("Producto seleccionado: " + nombre[4]);
                                 totales[4] = precio[4] * cantidad[i];
                             }
-                            if (noproductos == 5) {
+                            if (nombre2[i] == 5) {
                                 System.out.println("Producto seleccionado: " + nombre[5]);
                                 totales[5] = precio[5] * cantidad[i];
                             }
-                            if (noproductos == 6) {
+                            if (nombre2[i] == 6) {
                                 System.out.println("Producto seleccionado: " + nombre[6]);
                                 totales[6] = precio[6] * cantidad[i];
                             }
-                            if (noproductos == 7) {
+                            if (nombre2[i] == 7) {
                                 System.out.println("Producto seleccionado: " + nombre[7]);
                                 totales[7] = precio[7] * cantidad[7];
                             }
-                            if (noproductos == 8) {
+                            if (nombre2[i] == 8) {
                                 System.out.println("Producto seleccionado: " + nombre[8]);
                                 totales[8] = precio[8] * cantidad[i];
                             }
-                            if (noproductos == 9) {
+                            if (nombre2[i] == 9) {
                                 System.out.println("Producto seleccionado: " + nombre[9]);
                                 totales[9] = precio[9] * cantidad[i];
                             }
-                            if (noproductos == 10) {
+                            if (nombre2[i] == 10) {
                                 System.out.println("Producto seleccionado: " + nombre[10]);
                                 totales[10] = precio[10] * cantidad[i];
                             }
-                            if (noproductos == 11) {
+                            if (nombre2[i] == 11) {
                                 System.out.println("Producto seleccionado: " + nombre[11]);
                                 totales[11] = precio[11] * cantidad[i];
                             }
-                            if (noproductos == 12) {
+                            if (nombre2[i] == 12) {
                                 System.out.println("Producto seleccionado: " + nombre[12]);
                                 totales[12] = precio[12] * cantidad[i];
                             }
-                            if (noproductos == 13) {
+                            if (nombre2[i] == 13) {
                                 System.out.println("Producto seleccionado: " + nombre[13]);
                                 totales[13] = precio[13] * cantidad[i];
                             }
-                            if (noproductos == 14) {
+                            if (nombre2[i] == 14) {
                                 System.out.println("Producto seleccionado: " + nombre[14]);
                                 totales[14] = precio[14] * cantidad[i];
                             }
-                            if (noproductos == 15) {
+                            if (nombre2[i] == 15) {
                                 System.out.println("Producto seleccionado: " + nombre[15]);
                                 totales[15] = precio[15] * cantidad[i];
                             }
-                            if (noproductos == 16) {
+                            if (nombre2[i] == 16) {
                                 System.out.println("Producto seleccionado: " + nombre[16]);
                                 totales[16] = precio[16] * cantidad[i];
                             }
-                            if (noproductos == 17) {
+                            if (nombre2[i] == 17) {
                                 System.out.println("Producto seleccionado: " + nombre[17]);
                                 totales[17] = precio[17] * cantidad[i];
                             }
-                            if (noproductos == 18) {
+                            if (nombre2[i] == 18) {
                                 System.out.println("Producto seleccionado: " + nombre[18]);
                                 totales[18] = precio[18] * cantidad[i];
                             }
-                            if (noproductos == 19) {
+                            if (nombre2[i] == 19) {
                                 System.out.println("Producto seleccionado: " + nombre[19]);
                                 totales[19] = precio[19] * cantidad[i];
                             }
-                            if (noproductos == 20) {
+                            if (nombre2[i] == 20) {
                                 System.out.println("Producto seleccionado: " + nombre[20]);
                                 totales[20] = precio[20] * cantidad[i];
                             }
-                            //System.out.println("Producto seleccionado: " + nombre[i]);
-                            //totales[i] = precio[i] * cantidad[i];
                             suma += totales[i];
-                            //System.out.println("El total de la compra individual es: " + totales[i]);
-                            //}
                             break;
                         }
                         noproductos += 1;
@@ -319,9 +303,7 @@ public class supermarket {
                         System.out.println("[2]. No");
                         System.out.println("_______________________________");
                         salir3 = menuSuper.nextInt();
-//                        if (salir3 != 1) {
-//                            aux4 = false;
-//                        }
+
                     } while (salir3 == 1);
                     System.out.println("______________________________________________________");
                     System.out.println("Desea aplicar un código de descuento a sus compras?");
@@ -395,15 +377,13 @@ public class supermarket {
                             }
                         }
                     }
-                    do {
-                        for (int i = (cant - 1); i >= 0; i--) {
-                            System.out.println("Cantidad: " + cantidad[i] + " - " + "Producto: " + nombre[nombre2[i]]);
-                        }
-                    } while (cant < 0);
+                    for (int i = (cant - 1); i >= 0; i--) {
+                        System.out.println("Cantidad: " + cantidad[i] + " - " + "Producto: " + nombre[nombre2[i]]);
+                    }
                     cant += 1;
                     continue;
                 case 6:
-                    System.out.println("--SALIENDO...---");
+                    System.out.println("SALIENDO...");
                     break;
                 default:
                     System.out.println("Opcion no valida, intente nuevamente");
